@@ -1,50 +1,127 @@
-# Welcome to your Expo app 👋
+# Foosball Trainer App 🎮
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native mobile application built with Expo to help foosball players practice different shots and techniques. The app provides voice-guided training sessions with random shot selections and timing.
 
-## Get started
+## Features
 
-1. Install dependencies
+- **5-Bar Training**: Practice wall, lane, and high-lane shots with random timing
+- **Leo Spredeman 5-Bar**: Advanced training with wall, lane, bounce-wall, and bounce-lane shots
+- **Snake Training**: Practice left, right, and center shots
+- **SnakeLR Training**: Focus on left and right shots
+- **Pull Training**: Practice short, middle, and long pulls
 
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or newer)
+- npm or yarn
+- Expo Go app on your mobile device
+- [Expo CLI](https://docs.expo.dev/get-started/installation/)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/foosball-trainer.git
+   cd foosball-trainer
+   ```
+
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-2. Start the app
-
+3. Start the development server:
    ```bash
-    npx expo start
+   npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+4. Scan the QR code with your mobile device:
+   - iOS: Use the Camera app
+   - Android: Use the Expo Go app
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Building for Production
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Creating an APK
 
-## Get a fresh project
+1. Install EAS CLI:
+   ```bash
+   npm install -g eas-cli
+   ```
 
-When you're ready, run:
+2. Log in to your Expo account:
+   ```bash
+   eas login
+   ```
 
-```bash
-npm run reset-project
+3. Configure the build:
+   ```bash
+   eas build:configure
+   ```
+
+4. Build the APK:
+   ```bash
+   eas build -p android --profile preview
+   ```
+
+The APK will be available for download once the build is complete.
+
+## Project Structure
+
+```
+foosball-trainer/
+├── app/                    # Main application code
+│   ├── (tabs)/            # Tab-based navigation
+│   │   ├── index.tsx      # Home screen
+│   │   ├── 5-bar.tsx      # 5-Bar training
+│   │   ├── snake.tsx      # Snake training
+│   │   ├── snake-LR.tsx   # SnakeLR training
+│   │   ├── pull.tsx       # Pull training
+│   │   └── leo-spredeman-5-bar.tsx  # Leo Spredeman training
+├── components/            # Reusable components
+├── constants/            # App constants and theme
+├── assets/              # Images and other static assets
+└── hooks/               # Custom React hooks
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Training Modes
 
-## Learn more
+### 5-Bar
+- Random wait time: 3-10 seconds
+- Shot options: wall, lane, high-lane
+- Perfect for practicing basic 5-bar shots
 
-To learn more about developing your project with Expo, look at the following resources:
+### Leo Spredeman 5-Bar
+- Random wait time: 3-10 seconds
+- Shot options: wall, lane, bounce-wall, bounce-lane
+- Advanced training inspired by Spredeman Leo WCS
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Snake
+- Random wait time: 3-13 seconds
+- Shot options: left, right, center
+- Focus on snake shot variations
 
-## Join the community
+### SnakeLR
+- Random wait time: 3-13 seconds
+- Shot options: left, right
+- Specialized training for left-right shots
 
-Join our community of developers creating universal apps.
+### Pull
+- Random wait time: 3-13 seconds
+- Shot options: short, middle, long
+- Practice pull shot distances
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Inspired by foosball training techniques
+- Built with [Expo](https://expo.dev)
+- Uses [React Native](https://reactnative.dev)
