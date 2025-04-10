@@ -1,6 +1,9 @@
 import React, { useState, useRef } from 'react';
-import { View, Text, Button, StyleSheet, ScrollView } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import * as Speech from 'expo-speech';
+import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
 
 const LeoSpredemanFiveBar = () => {
   const [results, setResults] = useState<string[]>([]);
@@ -53,57 +56,67 @@ const LeoSpredemanFiveBar = () => {
     new Promise(resolve => setTimeout(resolve, ms));
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Leo Spredeman 5-Bar</Text>
-      <Text style={styles.counter}>Completed loops: {counter}</Text>
+    <ParallaxScrollView
+      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
+      headerImage={
+        <Image
+          source={require('@/assets/images/soccer-field.png')}
+          style={StyleSheet.absoluteFillObject}
+        />
+      }>
+      <ThemedView style={styles.titleContainer}>
+        <ThemedText type="title">Leo Spredeman 5-Bar</ThemedText>
+      </ThemedView>
       
-      {!isRunningRef.current ? (
-        <Button title="Start" onPress={startGame} />
-      ) : (
-        <Button title="Stop" onPress={stopGame} />
-      )}
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">Completed loops: {counter}</ThemedText>
+        {!isRunningRef.current ? (
+          <ThemedText onPress={startGame} style={styles.button}>Start</ThemedText>
+        ) : (
+          <ThemedText onPress={stopGame} style={styles.button}>Stop</ThemedText>
+        )}
+      </ThemedView>
 
-      <ScrollView style={styles.results}>
+      <ThemedView style={styles.resultsContainer}>
         {results.map((result, index) => (
-          <Text key={index} style={styles.result}>
+          <ThemedText key={index} style={styles.result}>
             {index + 1}. {result}
-          </Text>
+          </ThemedText>
         ))}
-      </ScrollView>
-    </View>
+      </ThemedView>
+    </ParallaxScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: '#f5f5f5',
+  titleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    textAlign: 'center',
+  stepContainer: {
+    gap: 8,
+    marginBottom: 8,
   },
-  counter: {
-    fontSize: 18,
-    marginBottom: 15,
-    textAlign: 'center',
-    color: '#333',
-  },
-  results: {
+  resultsContainer: {
+    gap: 8,
     marginTop: 20,
-    maxHeight: 200,
+    padding: 10,
+    borderRadius: 5,
     borderWidth: 1,
     borderColor: '#ddd',
-    borderRadius: 5,
-    padding: 10,
   },
   result: {
     fontSize: 16,
     paddingVertical: 5,
-    color: '#444',
+  },
+  button: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 10,
   },
 });
 
