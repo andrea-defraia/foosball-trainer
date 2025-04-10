@@ -116,8 +116,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     padding: 10,
-    backgroundColor: '#007AFF',
-    color: 'white',
     borderRadius: 5,
     marginTop: 10,
   },
