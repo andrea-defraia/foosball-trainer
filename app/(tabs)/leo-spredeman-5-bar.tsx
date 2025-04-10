@@ -1,10 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { Image, StyleSheet } from 'react-native';
 import * as Speech from 'expo-speech';
-
+import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
 
 const LeoSpredemanFiveBar = () => {
   const [results, setResults] = useState<string[]>([]);
